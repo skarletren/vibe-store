@@ -97,16 +97,15 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           100% { opacity: 1; transform: scale(1); }
         }
 
-        /* ===== ИСПРАВЛЕНИЯ ДЛЯ HERO ===== */
+        /* ===== БАЗОВЫЕ СТИЛИ HERO (МОБИЛЬНЫЕ ПО УМОЛЧАНИЮ) ===== */
         .hero-section {
-          height: 100vh;
           background: linear-gradient(135deg, #001a4d, #1a73e8);
           position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          padding-top: 80px;   /* Отступ под фиксированный хедер */
+          padding-top: 60px;   /* под хедер на мобильных */
           box-sizing: border-box;
         }
         .hero-section::after {
@@ -120,17 +119,43 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           z-index: 1;
         }
         .hero-pc-content {
+          display: none;   /* на мобильных скрыт */
+        }
+        .hero-mobile-container {
+          display: block;
+          width: 100%;
+          position: relative;
+        }
+        .hero-mobile-img-wrap {
+          position: relative;
+          width: 100%;
+          height: auto;
+          min-height: 100vh;
+          background: #0066ff !important;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .hero-mobile-gradient {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%);
+          z-index: 2;
+        }
+        .hero-content-mobile {
           position: relative;
           z-index: 10;
           text-align: center;
-          display: block;
           width: 100%;
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 20px 20px 0;
-        }
-        .hero-mobile-container {
-          display: none;
+          padding: 20px 16px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         .hero-image-container {
           width: 100%;
@@ -139,83 +164,14 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           margin-bottom: 20px;
         }
         .hero-description-box {
-          margin-top: 30px;      /* Было 150px, теперь аккуратно под кнопкой */
-          display: flex;
-          justify-content: center;
-        }
-
-        /* Для мобильной версии */
-        @media (max-width: 768px) {
-          .hero-section {
-            background: none !important;
-            display: block;
-            height: auto;
-            min-height: auto;
-            padding-top: 60px;   /* Под хедер на мобильных */
-          }
-          .hero-section::after {
-            display: none;
-          }
-          .hero-pc-content {
-            display: none;
-          }
-          .hero-mobile-container {
-            display: block;
-            width: 100%;
-            position: relative;
-          }
-          .hero-mobile-img-wrap {
-            position: relative;
-            width: 100%;
-            height: auto;
-            min-height: 100vh;
-            background: #0066ff !important;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
-          .hero-mobile-gradient {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%);
-            z-index: 2;
-          }
-          .hero-content-mobile {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            width: 100%;
-            padding: 20px 16px;   /* Уменьшили отступы */
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          .hero-content-mobile .hero-image-container {
-            margin-bottom: 20px;
-          }
-          .hero-content-mobile .cta-button-mobile {
-            margin-top: 10px;
-            margin-bottom: 20px;
-          }
-          .hero-content-mobile .hero-description-box {
-            margin-top: 10px;
-            width: 100%;
-          }
-          .animated-gradient-box {
-            padding: 18px 15px;
-            font-size: 13px;
-          }
+          margin-top: 20px;
+          width: 100%;
         }
 
         /* Кнопка CTA – тёмная, с тенью */
         .cta-button {
           display: inline-block;
-          margin-top: 30px;
+          margin-top: 20px;
           padding: 14px 35px;
           background: #0a2a5e;
           color: white;
@@ -277,7 +233,7 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           100% { background-position: 0% 50%; }
         }
 
-        /* Остальные стили (без изменений, но футер уже в порядке) */
+        /* Остальные стили (поиск, хедер, карточки и т.д.) */
         @keyframes rotate3d { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
         .logo-wrap-3d { perspective: 1000px; display: flex; align-items: center; }
         .main-logo-3d { font-size: 18px; font-weight: 900; letter-spacing: 1px; margin: 0; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.2); display: inline-block; }
@@ -324,9 +280,9 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
         .slider-relative-container { position: relative; display: flex; align-items: center; }
         .products-scroll-container { display: flex; gap: 20px; overflow-x: auto; overflow-y: hidden; padding-bottom: 40px; scroll-behavior: smooth; width: 100%; scrollbar-width: none; scroll-snap-type: x mandatory; }
         .products-scroll-container::-webkit-scrollbar { display: none; }
-        .all-products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-bottom: 20px; }
+        .all-products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding-bottom: 20px; }
         .product-scroll-anim { 
-          flex: 0 0 calc((100% - 60px) / 4);
+          flex: 0 0 75%;
           scroll-snap-align: start;
           scroll-snap-stop: always;
           opacity: 1;
@@ -361,14 +317,14 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           transform: scale(1.05);
         }
         .product-title-modern {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 800;
           margin: 12px 12px 4px;
           color: #000000;
         }
         .product-price-modern {
           font-weight: 900;
-          font-size: 16px;
+          font-size: 14px;
           color: #1a73e8;
           margin: 0 12px 16px;
         }
@@ -583,25 +539,62 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           line-height: 1.5;
         }
 
-        @media (max-width: 550px) {
-          .rules-modal { padding: 20px 18px; }
-          .rules-title { font-size: 1.4rem; }
-        }
-        @media (max-width: 768px) {
-          .shop-section-wrapper { padding: 40px 5%; }
-          .slider-nav-btn { display: none; }
-          .all-products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-          .product-scroll-anim { flex: 0 0 75%; }
-          .slider-arrow { width: 36px; height: 36px; }
-          .slider-arrow svg { width: 20px; height: 20px; }
-          .main-header {
-            background: linear-gradient(to bottom, #0066ff 0%, #0066ff 60%, rgba(0,102,255,0) 100%) !important;
+        /* ===== ДЕСКТОПНАЯ ВЕРСИЯ (min-width: 1024px) ===== */
+        @media (min-width: 1024px) {
+          .hero-section {
+            min-height: 100vh;
+            height: auto;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
           }
-          .placeholder-hero-mobile {
-            background: #0066ff !important;
-            color: white !important;
+          .hero-pc-content {
+            display: block;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 20px 0;
+            text-align: center;
           }
-          .product-title-modern { font-size: 14px; }
-          .product-price-modern { font-size: 14px; }
+          .hero-mobile-container {
+            display: none;
+          }
+          .hero-image-container {
+            margin-bottom: 30px;
+          }
+          .hero-image-container img {
+            max-height: 550px;
+            width: auto;
+            object-fit: contain;
+          }
+          .hero-description-box {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+          }
+          .cta-button {
+            margin-top: 30px;
+          }
+
+          /* Сетка товаров */
+          .all-products-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+          }
+          .product-scroll-anim {
+            flex: 0 0 calc((100% - 60px) / 4);
+          }
+          .product-title-modern {
+            font-size: 16px;
+          }
+          .product-price-modern {
+            font-size: 16px;
+          }
+
+          /* Футер */
+          .footer-links {
+            justify-content: flex-start;
+          }
         }
       `})]})}v.createRoot(document.getElementById(`root`)).render((0,$.jsx)(_.StrictMode,{children:(0,$.jsx)(nm,{})}));
