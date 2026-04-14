@@ -97,7 +97,7 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           100% { opacity: 1; transform: scale(1); }
         }
 
-        /* ===== БАЗОВЫЕ СТИЛИ HERO (МОБИЛЬНЫЕ ПО УМОЛЧАНИЮ) ===== */
+        /* ===== БАЗОВЫЕ СТИЛИ (МОБИЛЬНЫЕ) ===== */
         .hero-section {
           background: linear-gradient(135deg, #001a4d, #1a73e8);
           position: relative;
@@ -105,7 +105,7 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          padding-top: 60px;   /* под хедер на мобильных */
+          padding-top: 60px;
           box-sizing: border-box;
         }
         .hero-section::after {
@@ -119,7 +119,7 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           z-index: 1;
         }
         .hero-pc-content {
-          display: none;   /* на мобильных скрыт */
+          display: none;
         }
         .hero-mobile-container {
           display: block;
@@ -168,7 +168,7 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           width: 100%;
         }
 
-        /* Кнопка CTA – тёмная, с тенью */
+        /* Кнопка CTA */
         .cta-button {
           display: inline-block;
           margin-top: 20px;
@@ -184,6 +184,9 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           box-shadow: 0 8px 20px rgba(0,0,0,0.25);
           letter-spacing: 1px;
           text-transform: uppercase;
+          position: relative;
+          z-index: 20;
+          pointer-events: auto;
         }
         .cta-button:hover {
           transform: translateY(-3px);
@@ -233,11 +236,12 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           100% { background-position: 0% 50%; }
         }
 
-        /* Остальные стили (поиск, хедер, карточки и т.д.) */
+        /* Остальные стили */
         @keyframes rotate3d { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
         .logo-wrap-3d { perspective: 1000px; display: flex; align-items: center; }
         .main-logo-3d { font-size: 18px; font-weight: 900; letter-spacing: 1px; margin: 0; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.2); display: inline-block; }
 
+        /* Анимация заголовков — черно-синий градиент */
         @keyframes textShimmer {
           0% { background-position: 0% 50%; }
           100% { background-position: 100% 50%; }
@@ -247,7 +251,7 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
           font-weight: 900;
           margin-bottom: 30px;
           text-transform: uppercase;
-          background: linear-gradient(90deg, #ffffff, #a0d0ff, #ffffff);
+          background: linear-gradient(90deg, #000000, #1a73e8, #000000);
           background-size: 200% auto;
           -webkit-background-clip: text;
           background-clip: text;
@@ -556,6 +560,8 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
             margin: 0 auto;
             padding: 20px 20px 0;
             text-align: center;
+            position: relative;
+            z-index: 15;
           }
           .hero-mobile-container {
             display: none;
@@ -567,14 +573,26 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
             max-height: 550px;
             width: auto;
             object-fit: contain;
+            /* Эффект размытия краев на ПК */
+            mask-image: radial-gradient(circle, black 70%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
           }
           .hero-description-box {
             margin-top: 40px;
             display: flex;
             justify-content: center;
+            /* Убираем ограничения высоты и overflow */
+            max-height: none;
+            overflow: visible;
+          }
+          .animated-gradient-box {
+            max-height: none;
+            overflow: visible;
           }
           .cta-button {
             margin-top: 30px;
+            position: relative;
+            z-index: 30;
           }
 
           /* Сетка товаров */
@@ -592,9 +610,13 @@ Total Duration: ${c-l}ms`),z.resolve({didRun:!0,sequenceNumbersCollected:r,targe
             font-size: 16px;
           }
 
-          /* Футер */
+          /* Футер — выравнивание колонок по верхнему краю */
           .footer-links {
             justify-content: flex-start;
+            align-items: flex-start;
+          }
+          .footer-column {
+            align-items: flex-start;
           }
         }
       `})]})}v.createRoot(document.getElementById(`root`)).render((0,$.jsx)(_.StrictMode,{children:(0,$.jsx)(nm,{})}));
