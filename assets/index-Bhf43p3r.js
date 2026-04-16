@@ -2330,7 +2330,7 @@ ${F}
           outline: 0 !important;
           width: 100%;
           overflow-x: hidden;
-          background: #0a0f1a;   /* тёмный фон, чтобы blur был заметен */
+          background: #0a0f1a;
         }
 
         body {
@@ -2671,7 +2671,7 @@ ${F}
           pointer-events: none;
         }
 
-        /* Mobile hero (исправлено центрирование) */
+        /* Mobile hero (увеличена фотка на 25%) */
         .hero-mobile {
           display: flex;
           flex-direction: column;
@@ -2683,8 +2683,8 @@ ${F}
           z-index: 10;
         }
         .hero-mobile-img {
-          width: 128px;
-          height: 128px;
+          width: 160px;
+          height: 160px;
           border-radius: 50%;
           object-fit: cover;
           border: 3px solid rgba(255,255,255,0.2);
