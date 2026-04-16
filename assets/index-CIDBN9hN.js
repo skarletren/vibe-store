@@ -2671,9 +2671,12 @@ ${F}
           pointer-events: none;
         }
 
-        /* Mobile hero */
+        /* Mobile hero (исправлено центрирование) */
         .hero-mobile {
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           width: 100%;
           text-align: center;
           position: relative;
